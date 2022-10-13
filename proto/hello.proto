@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package hello;
+option go_package = "github.com/hulb/grpc-test/pb";
+
+import "timestamp.proto";
+import "struct.proto";
+
+message Request{
+    string msg = 1;
+    google.protobuf.Timestamp time = 2;
+}
+
+message Response{
+    string back = 1;
+    google.protobuf.Struct value = 2;
+}
+
+service Greeter{
+    rpc SayHi(Request) returns(Response){};
+}
